@@ -1,7 +1,7 @@
 import { Chat } from "./Chat";
 import { useState } from "react";
 
-export const Form = ({ ram }) => {
+export const Form = ({ handleOnSubmit }) => {
   const [text, setText] = useState("");
 
   const onChangeGetData = (e) => {
@@ -9,16 +9,16 @@ export const Form = ({ ram }) => {
     setText(value);
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnFormSubmit = (e) => {
     e.preventDefault();
-    ram(text);
+    handleOnSubmit(text);
   };
 
   return (
     <div>
       <Chat mango={text} />
-      <form action="" onSubmit={handleOnSubmit}>
-        <input onChange={onChangeGetData} type="text" />
+      <form action="" onSubmit={handleOnFormSubmit}>
+        <input onChange={onChangeGetData} type="text" value={text} />
         <button type="submit">Submit</button>
       </form>
     </div>
